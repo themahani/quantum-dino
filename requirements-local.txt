@@ -1,0 +1,2 @@
+-r requirements.txt
+qiskit-aer>=0.17.2,<0.18

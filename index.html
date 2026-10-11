@@ -1,0 +1,34 @@
+<main class="app">
+  <header class="masthead">
+    <a class="wordmark" href="#" aria-label="Coherence Runner home"><span class="mini-dino" aria-hidden="true">▟</span> COHERENCE<span class="wordmark-light">/RUNNER</span></a>
+    <span class="edition">A QUANTUM EXPERIMENT YOU CAN PLAY</span>
+  </header>
+  <section class="intro" aria-labelledby="title">
+    <div><p class="eyebrow">CHROME'S LITTLE RUNNER. A NOISIER UNIVERSE.</p>
+      <h1 id="title">Jump higher.<br><span>Lose coherence.</span></h1>
+      <p class="lead">The higher you jump, the less predictable the world becomes.<br>One quantum circuit. Five atmospheres. How far can you go?</p>
+    </div>
+    <div class="experiment-tag"><span class="status-dot" id="status-dot"></span><span id="experiment-status" role="status">PREPARING QUANTUM WORLD</span><small id="experiment-detail">20 qubits · 5 noise levels · 1 circuit</small></div>
+  </section>
+  <section class="runner-panel" aria-label="Dinosaur runner game">
+    <div class="game-toolbar"><span class="world-label"><span id="world-state">WORLD / INITIALIZING</span></span><div class="scores"><span>HI <b id="high-score">00000</b></span><span>SCORE <b id="score">00000</b></span></div></div>
+    <div class="canvas-wrap">
+      <canvas id="game" width="960" height="320" tabindex="0" aria-label="Dinosaur runner. Space or up arrow to jump; hold for a higher jump. P to pause."></canvas>
+      <div class="game-overlay" id="game-overlay"><p class="overlay-kicker" id="overlay-kicker">ONE CIRCUIT BEFORE THE FIRST STEP</p><h2 id="overlay-title">Building your atmosphere…</h2><p id="overlay-copy">The game starts after the measurements arrive.</p><button id="play" class="primary" disabled>PLEASE WAIT <span aria-hidden="true">→</span></button></div>
+      <div class="pause-hint" id="pause-hint" hidden>PAUSED · PRESS P TO RESUME</div>
+    </div>
+    <div class="game-footer"><div class="control-hints"><span><kbd>SPACE</kbd> / <kbd>↑</kbd> hold to jump higher</span><span><kbd>↓</kbd> duck</span><span><kbd>P</kbd> pause</span></div><button id="pause" class="text-button" disabled>PAUSE</button><span class="speed-label">SPEED <b id="speed">1.00×</b></span></div>
+  </section>
+  <div class="touch-controls"><button id="touch-jump" disabled>HOLD TO JUMP ↑</button><button id="touch-duck" disabled>DUCK ↓</button></div>
+  <section class="telemetry" aria-label="Live quantum visualization">
+    <div class="telemetry-card atmosphere-card"><p class="eyebrow">01 / ATMOSPHERE</p><div class="atmosphere-heading"><h2 id="level-name">CLEAR</h2><span id="noise-value">p = 0.000</span></div><div class="noise-track" id="noise-track" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><div class="meter-caption"><span>COHERENT</span><span>NOISY</span></div><p class="telemetry-description" id="atmosphere-copy">Grounded. Interference keeps the next pattern predictable.</p><label class="explore-label" for="explore">EXPLORE AN ALTITUDE <span id="altitude-label">0 px</span></label><input id="explore" type="range" min="0" max="160" step="1" value="0" aria-label="Explore altitude while not running"><small class="help">Inspect while idle or paused. During play, the dino controls this.</small></div>
+    <div class="telemetry-card distribution-card"><div class="card-heading"><p class="eyebrow">02 / MEASUREMENT DISTRIBUTION</p><span class="sample-count" id="sample-count">— SHOTS / LEVEL</span></div><div class="chart-legend"><span><i class="measured-key"></i> measured</span><span><i class="ideal-key"></i> ideal channel reference</span></div><div class="histogram" id="histogram" role="img" aria-label="Outcome probabilities loading"></div><p class="telemetry-description">Noise erases destructive interference. Outcomes other than <b>00</b> tighten future obstacle spacing.</p></div>
+    <div class="telemetry-card next-card"><p class="eyebrow">03 / LATEST TERRAIN COMMAND</p><div class="command"><span id="selected-outcome">|00⟩</span><div><strong id="delta-value">NORMAL GAP</strong><small id="delta-description">Waiting for your first jump</small></div></div><div class="command-rule"></div><p class="telemetry-description">Climb into a new layer to sample its cached distribution. Obstacles already on screen never move unexpectedly.</p><div class="event-log" id="event-log" aria-label="Recent terrain commands"><span>YOUR JUMPS WILL APPEAR HERE</span></div></div>
+  </section>
+  <section class="explanation" aria-labelledby="how-title"><div><p class="eyebrow">THE SCIENCE UNDER THE PIXELS</p><h2 id="how-title">Not just a quantum dice roll.</h2><p>Two interference experiments per altitude begin in a predictable state. An environment qubit introduces a controlled phase-flip channel. As noise grows, the interference that favors <b>00</b> fades—and the terrain stops keeping its rhythm.</p><p>Collect floating diamonds for <b>+100 points</b>. Their heights vary above the cacti; higher diamonds demand noisier jumps. Small jumps are safer. The scene accelerates as you survive.</p></div><div class="circuit-card"><div class="circuit-caption">ONE BIT OF THE ATMOSPHERE</div><pre aria-label="Circuit: data qubit Hadamard, controlled Z, Hadamard, measurement; environment Ry rotation controls Z">data  |0⟩ ── H ───── Z ── H ── M
+                    │
+env   |0⟩ ── Ry(θ) ──●───────────</pre><p>θ = 2 asin(√p) <span>·</span> P(1) = p</p><small>5 levels × 2 data/environment pairs = 20 qubits.<br>Only the 10 data qubits are measured.</small></div></section>
+  <details class="lab-details"><summary>EXPERIMENT DETAILS &amp; REPRODUCIBILITY <span>+</span></summary><div class="lab-content"><p id="run-metadata">Waiting for circuit results.</p><p>Displayed bars are measured marginals; outlined bars are the analytic ideal-channel reference, not a second job. Device noise may change the measured results. Classical sampling from the cached distributions drives gameplay; the quantum backend is not contacted during play.</p><label for="seed">WORLD SEED <input id="seed" type="number" min="0" max="4294967295" value="2026" step="1"></label><p class="help">Replays reuse this seed and the same quantum table. Identical inputs reproduce the world; different jumps can change its future.</p><button id="export" class="secondary" disabled>DOWNLOAD EXPERIMENT JSON ↓</button></div></details>
+  <p id="announcement" class="sr-only" aria-live="polite"></p>
+  <footer class="site-footer"><span>COHERENCE RUNNER · QUANTUM PLAYGROUND / QUANTUM UNLOCKED</span><span>This effort is supported by Qollab &amp; IonQ</span><span>MIT LICENSE · ORIGINAL PIXEL ART</span></footer>
+</main>
